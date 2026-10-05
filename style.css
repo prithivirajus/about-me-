@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Rajdhani:wght@500;700&display=swap');
+
+:root {
+    --bg-main: #0f1923; /* Valorant default dark UI */
+    --valo-red: #ff4655;
+    --omen-purple: #5c43a4;
+    --omen-cyan: #3fc8c4;
+    --omen-shadow: #1e1b2e;
+    --text-white: #ece8e1;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-white);
+    font-family: 'Rajdhani', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Omen's dark realm radial background */
+    background: radial-gradient(circle at 50% 50%, var(--omen-shadow) 0%, var(--bg-main) 100%);
+    position: relative;
+    overflow: hidden;
+    cursor: crosshair; /* Changes your mouse to a tactical crosshair */
+}
+
+/* Tactical HUD scanline overlay */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        rgba(63, 200, 196, 0.03) 2px,
+                                          transparent 4px
+    );
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 850px;
+    width: 90%;
+    padding: 50px;
+    background: rgba(15, 25, 35, 0.85);
+    border: 1px solid rgba(92, 67, 164, 0.4);
+    box-shadow: 0 0 30px rgba(92, 67, 164, 0.2), inset 0 0 20px rgba(63, 200, 196, 0.05);
+    /* Valorant signature cut-corners */
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+}
+
+/* Omen Cyan energy slash on the right side */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 3px;
+    height: 100%;
+    background: var(--omen-cyan);
+    box-shadow: 0 0 15px var(--omen-cyan);
+    opacity: 0.8;
+}
+
+h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: var(--text-white);
+    line-height: 1;
+    margin-bottom: 5px;
+    /* 3D Glitch text effect using Omen's colors */
+    text-shadow: 3px 3px 0px var(--omen-purple), -3px -3px 0px rgba(63, 200, 196, 0.6);
+}
+
+h2 {
+    font-family: 'Teko', sans-serif;
+    font-size: 3.5rem;
+    color: var(--omen-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--omen-purple);
+    padding-bottom: 5px;
+}
+
+p, li {
+    font-size: 1.3rem;
+    color: #a7b0b5;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+strong {
+    color: var(--omen-cyan);
+}
+
+/* AUTHENTIC VALORANT BUTTON STYLE */
+.menu {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    padding: 12px 35px;
+    font-family: 'Teko', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-white);
+    background: transparent;
+    border: 1px solid var(--omen-cyan);
+    text-decoration: none;
+    transition: 0.1s ease-in-out;
+    /* Cut corners on buttons */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    cursor: crosshair;
+}
+
+/* The fill-slide hover effect from the game */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--omen-purple);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-in-out;
+}
+
+.btn:hover {
+    color: #fff;
+    border-color: var(--omen-purple);
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+/* Scatter button gets the Reyna/Valorant Red treatment */
+.back-btn {
+    border-color: var(--valo-red);
+    margin-top: 30px;
+}
+.back-btn::before {
+    background: var(--valo-red);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Custom list markers that look like map pings */
+ul li {
+    position: relative;
+    padding-left: 30px;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    background: var(--omen-purple);
+    transform: rotate(45deg); /* Diamond shape */
+    box-shadow: 0 0 8px var(--omen-purple);
+}
+
+/* Social Links styling */
+a.link {
+    display: inline-block;
+    font-family: 'Teko', sans-serif;
+    font-size: 2.2rem;
+    color: var(--text-white);
+    text-decoration: none;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    padding: 5px 20px;
+    border-left: 4px solid var(--omen-purple);
+    background: rgba(92, 67, 164, 0.1);
+    transition: 0.3s ease;
+    cursor: crosshair;
+}
+
+a.link:hover {
+    background: rgba(63, 200, 196, 0.2);
+    border-left-color: var(--omen-cyan);
+    color: var(--omen-cyan);
+    text-shadow: 0 0 10px rgba(63, 200, 196, 0.8);
+    transform: translateX(5px);
+}
